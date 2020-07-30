@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>아이템매니아 리스트</title>
 </head>
 <body>
     <h3>아이템매니아 리스트</h3>
+    <a href="board/mania_list.html" th:href="@{getManiaRegister}">
+        새 아이템 등록
+    </a>
+
     <table border="1">
         <tr>
             <th align="center" width="80">CustNo</th>
@@ -15,9 +19,34 @@
             <th align="center" width="80">ItemName</th>
             <th align="center" width="80">Price</th>
             <th align="center" width="80">RegDate</th>
-
         </tr>
 
+        <tr th:if="${#lists.isEmpty(list_wd)}">
+            <!--비어있다는 메시지를 표시할 때는 7개의 열이 합쳐져야 한다-->
+            <td colspan="7">
+                List is Empty
+            </td>
+        </tr>
+        <!-- th = Thymeleaf -->
+        <tr th:each="board: ${list_wd}">
+            <td align="center" th:text="${board.custNo}">
+                ${board.custNo}
+            </td>
+
+            <td align ="right" th:text="${board.maniaId}">
+                ${board.maniaId}
+            </td>
+            <td align ="right" th:text="${board.maniaNickname}">
+                ${board.maniaNickname}
+            </td>
+
+            <td align="left">
+                <a href="board/mania_read.html"
+                   th:href="@{|mania_read?custNo=${board.custNo}|}"
+                   th:text="${board."
+            </td>
+
+        </tr>
     </table>
 </body>
 </html>

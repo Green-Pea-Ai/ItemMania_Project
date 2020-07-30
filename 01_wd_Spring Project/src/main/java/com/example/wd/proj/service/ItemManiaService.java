@@ -7,6 +7,6 @@ import java.util.List;
 public interface ItemManiaService {
     // 인터페이스 부분
 
-    public List<ItemManiaBoard> list() throws Exception;
+    public List<ItemManiaBoard> mania_list() throws Exception;
     //public void register(ItemManiaBoard board) throws Exception;
 }
