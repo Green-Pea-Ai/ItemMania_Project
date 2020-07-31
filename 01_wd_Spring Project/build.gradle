@@ -52,11 +52,12 @@ test {
     useJUnitPlatform()
 }
 
-test {
+/*test {
     systemProperty("java.library.path",
             file("${buildDir}/libs/hello/shared").absolutePath)
-}
+}*/
 
+/*
 model {
     platforms {
         x64 {
@@ -82,4 +83,4 @@ model {
     }
 }
 
-test.dependsOn 'helloSharedLibrary'
+test.dependsOn 'helloSharedLibrary'*/

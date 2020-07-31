@@ -10,6 +10,7 @@ public class ItemManiaBoard {
     private String itemName;
     private int price;
     private Date regDate;
+    private String content;
 
     // custNo======================================================
     public int getCustNo() {
@@ -65,5 +66,13 @@ public class ItemManiaBoard {
     }
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
+    }
+
+    // content======================================================
+    public String getContent() {
+        return content;
+    }
+    public void setContent(String content) {
+        this.content = content;
     }
 }

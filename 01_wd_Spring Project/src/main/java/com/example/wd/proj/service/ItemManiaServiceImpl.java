@@ -15,6 +15,11 @@ public class ItemManiaServiceImpl implements ItemManiaService {
 
     @Override
     public List<ItemManiaBoard> maniaList() throws Exception {
-        return maniaRepository.maniaList();
+        return maniaRepository.mbList();
+    }
+
+    @Override
+    public void maniaRegister(ItemManiaBoard board) throws Exception {
+
     }
 }

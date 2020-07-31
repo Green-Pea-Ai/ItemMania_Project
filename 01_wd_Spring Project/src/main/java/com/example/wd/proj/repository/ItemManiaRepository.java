@@ -19,7 +19,13 @@ public class ItemManiaRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<ItemManiaBoard> list() throws Exception {
+    // register : 아이템 등록
+    // remove : 아이템 삭제
+    // read : 아이템 상세보기
+    // modify : 아이템 정보 수정
+
+    // list : 아이템 리스트 보기
+    public List<ItemManiaBoard> mbList() throws Exception {
         log.info("Mania Repository list()");
 
         List<ItemManiaBoard> results = jdbcTemplate.query(
@@ -30,7 +36,8 @@ public class ItemManiaRepository {
                 new RowMapper<ItemManiaBoard>() {
                     @Override
                     public ItemManiaBoard mapRow(ResultSet rs, int rowNum)
-                            throws SQLException {
+                                                    throws SQLException {
+
                         ItemManiaBoard board = new ItemManiaBoard();
 
                         board.setCustNo(rs.getInt("cust_no"));
@@ -46,4 +53,20 @@ public class ItemManiaRepository {
                 });
         return results;
     }
+
+    public void itemInsert(ItemManiaBoard board) throws Exception {
+        log.info("Repository create()");
+
+        String query = "insert into item_mania(" +
+                "nickname, item_name, price, content) " +
+                "values(?, ?, ?, ?)";
+
+        jdbcTemplate.update(query,
+                board.getNickName(),
+                board.getItemName(),
+                board.getPrice(),
+                board.getContent());
+    }
+
+
 }
