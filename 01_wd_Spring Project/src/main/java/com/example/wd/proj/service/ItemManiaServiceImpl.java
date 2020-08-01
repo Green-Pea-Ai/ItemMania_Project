@@ -20,6 +20,6 @@ public class ItemManiaServiceImpl implements ItemManiaService {
 
     @Override
     public void maniaRegister(ItemManiaBoard board) throws Exception {
-
+        maniaRepository.itemInsert(board);
     }
 }

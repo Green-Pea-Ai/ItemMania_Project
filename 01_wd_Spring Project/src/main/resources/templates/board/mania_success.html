@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>성공 페이지</title>
 </head>
 <body>
-    <h1>성공! 실패는 성공의 어머니</h1>
+    <!--<h1>성공! 실패는 성공의 어머니</h1>-->
+    <!--<>${msg}</>에서 ${msg}는 아무 기능이 없다?-->
+    <h2 th:text="${msg}">${msg}</h2>
+    <a href="board/mania_list.html"
+       th:href="@{mania_list}">아이템 리스트로 이동</a>
 </body>
 </html>

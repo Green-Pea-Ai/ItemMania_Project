@@ -9,6 +9,7 @@
         src="http://code.jquery.com/jquery-2.1.4.min.js">
 </script>
 <!--board 정체 찾기-->
+<!--self.location = "contList";의 contList는 마니아컨트롤러의 contList이다.-->
 <script>
     $(document).ready(function() {
 
@@ -21,7 +22,7 @@
         });
 
         $("#btnList").on("click", function() {
-            self.location = "maniaList";
+            self.location = "mania_list";
         });
 
     });
@@ -33,14 +34,15 @@
     <form id="board" action="board/mania_success.html"
           th:action="@{mania_register}"
           th:object="${board}" method="post">
+
         <table>
             <tr>
                 <td>ItemName</td>
-                <td><input type="text" name="mr_item_name"></td>
-
+                <td><input type="text" name="itemName"
+                           th:field="*{itemName}"/></td>
                 <td><font color="red">
-                    <span th:if="${#fields.hasErrors('mr_item_name')}"
-                          th:errors="*{mr_item_name}">
+                    <span th:if="${#fields.hasErrors('itemName')}"
+                          th:errors="*{itemName}">
                         item name Error Message
                     </span>
                 </font></td>
@@ -48,11 +50,11 @@
 
             <tr>
                 <td>Nickname</td>
-                <td><input type="text" name="mr_nickname"
-                        th:field="*{mr_nickname}"/></td>
+                <td><input type="text" name="nickName"
+                        th:field="*{nickName}"/></td>
                 <td><font color="red">
-                    <span th:if="${#fields.hasErrors('mr_nickname')}"
-                          th:errors="*{mr_nickname}">
+                    <span th:if="${#fields.hasErrors('nickName')}"
+                          th:errors="*{nickName}">
                         Nickname Error Message
                     </span>
                 </font></td>
@@ -60,11 +62,11 @@
 
             <tr>
                 <td>ID</td>
-                <td><input type="text" name="mr_id"
-                           th:field="*{mr_id}"/></td>
+                <td><input type="text" name="userId"
+                           th:field="*{userId}"/></td>
                 <td><font color="red">
-                    <span th:if="${#fields.hasErrors('mr_id')}"
-                          th:errors="*{mr_id}">
+                    <span th:if="${#fields.hasErrors('userId')}"
+                          th:errors="*{userId}">
                         ID Error Message
                     </span>
                 </font></td>
@@ -72,11 +74,11 @@
 
             <tr>
                 <td>Price</td>
-                <td><input type="text" name="mr_price"
-                           th:field="*{mr_price}"/></td>
+                <td><input type="text" name="price"
+                           th:field="*{price}"/></td>
                 <td><font color="red">
-                    <span th:if="${#fields.hasErrors('mr_price')}"
-                          th:errors="*{mr_price}">
+                    <span th:if="${#fields.hasErrors('price')}"
+                          th:errors="*{price}">
                         Price Error Message
                     </span>
                 </font></td>

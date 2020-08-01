@@ -58,12 +58,13 @@ public class ItemManiaRepository {
         log.info("Repository create()");
 
         String query = "insert into item_mania(" +
-                "nickname, item_name, price, content) " +
-                "values(?, ?, ?, ?)";
+                "item_name, nickname, id, price, content) " +
+                "values(?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(query,
-                board.getNickName(),
                 board.getItemName(),
+                board.getNickName(),
+                board.getUserId(),
                 board.getPrice(),
                 board.getContent());
     }
