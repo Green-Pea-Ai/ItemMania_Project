@@ -10,6 +10,7 @@
 </script>
 <!--board 정체 찾기-->
 <!--self.location = "contList";의 contList는 마니아컨트롤러의 contList이다.-->
+<!--스크립트의 $("#board")는 form id의 board 정보가 들어있다.-->
 <script>
     $(document).ready(function() {
 
@@ -28,75 +29,90 @@
     });
 </script>
 
+<!-- th:action="@" URL 링킹
+     th:object="$" 객체 링킹
+     th:field="*" 객체에 있는 내부 멤버 링킹 -->
 <body>
     <h1>아이템 등록 페이지</h1>
 
-    <form id="board" action="board/mania_success.html"
-          th:action="@{mania_register}"
-          th:object="${board}" method="post">
+<form id="board" action="board/mania_success.html"
+      th:action="@{mania_register}"
+      th:object="${board}" method="post">
 
-        <table>
-            <tr>
-                <td>ItemName</td>
-                <td><input type="text" name="item_name"
-                           th:field="*{itemName}"/></td>
-                <td><font color="red">
-                    <span th:if="${#fields.hasErrors('itemName')}"
-                          th:errors="*{itemName}">
-                        item name Error Message
-                    </span>
-                </font></td>
-            </tr>
+    <table>
+        <tr>
+            <td>ItemName</td>
+            <td><input type="text" name="item_name"
+                       th:field="*{itemName}"/></td>
+            <td><font color="red">
+                <span th:if="${#fields.hasErrors('itemName')}"
+                      th:errors="*{itemName}">
+                    item name Error Message
+                </span>
+            </font></td>
+        </tr>
 
-            <tr>
-                <td>Nickname</td>
-                <td><input type="text" name="nickName"
-                        th:field="*{nickName}"/></td>
-                <td><font color="red">
-                    <span th:if="${#fields.hasErrors('nickName')}"
-                          th:errors="*{nickName}">
-                        Nickname Error Message
-                    </span>
-                </font></td>
-            </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text" name="price"
+                       th:field="*{price}"/></td>
+            <td><font color="red">
+                <span th:if="${#fields.hasErrors('price')}"
+                      th:errors="*{price}">
+                    Price Error Message
+                </span>
+            </font></td>
+        </tr>
 
-            <tr>
-                <td>ID</td>
-                <td><input type="text" name="userId"
-                           th:field="*{userId}"/></td>
-                <td><font color="red">
-                    <span th:if="${#fields.hasErrors('userId')}"
-                          th:errors="*{userId}">
-                        ID Error Message
-                    </span>
-                </font></td>
-            </tr>
+        <tr>
+            <td>Nickname</td>
+            <td><input type="text" name="nick_name"
+                    th:field="*{nickName}"/></td>
+            <td><font color="red">
+                <span th:if="${#fields.hasErrors('nickName')}"
+                      th:errors="*{nickName}">
+                    Nickname Error Message
+                </span>
+            </font></td>
+        </tr>
 
-            <tr>
-                <td>Price</td>
-                <td><input type="text" name="price"
-                           th:field="*{price}"/></td>
-                <td><font color="red">
-                    <span th:if="${#fields.hasErrors('price')}"
-                          th:errors="*{price}">
-                        Price Error Message
-                    </span>
-                </font></td>
-            </tr>
+        <tr>
+            <td>ID</td>
+            <td><input type="text" name="user_id"
+                       th:field="*{userId}"/></td>
+            <td><font color="red">
+                <span th:if="${#fields.hasErrors('userId')}"
+                      th:errors="*{userId}">
+                    ID Error Message
+                </span>
+            </font></td>
+        </tr>
 
-            <tr>
-                <td>아이템 설명</td>
-                <td><textarea name="content"
-                        th:field="*{content}"></textarea></td>
-                <td><font color="red">
-                    <span th:if="${#fields.hasErrors('content')}"
-                          th:errors="*{content}">
-                        Content Error Message
-                    </span>
-                </font></td>
-            </tr>
-        </table>
-    </form>
+        <tr>
+            <td>PW</td>
+            <td><input type="password" name="user_pw"
+                       th:field="*{userPw}"/></td>
+            <td><font color="red">
+                <span th:if="${#fields.hasErrors('userPw')}"
+                      th:errors="*{userPw}">
+                    ID Error Message
+                </span>
+            </font></td>
+        </tr>
+
+        <tr>
+            <td>아이템 설명</td>
+            <td><textarea name="content"
+                    th:field="*{content}"></textarea></td>
+            <td><font color="red">
+                <span th:if="${#fields.hasErrors('content')}"
+                      th:errors="*{content}">
+                    Content Error Message
+                </span>
+            </font></td>
+        </tr>
+    </table>
+</form>
 
 <div>
     <button type="submit" id="btnRegister">아이템 등록</button>

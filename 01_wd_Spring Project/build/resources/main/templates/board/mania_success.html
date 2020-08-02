@@ -7,7 +7,10 @@
 <body>
     <!--<h1>성공! 실패는 성공의 어머니</h1>-->
     <!--<>${msg}</>에서 ${msg}는 아무 기능이 없다?-->
-    <h2 th:text="${msg}">${msg}</h2>
+    <h2 th:text="${regi_msg}">${regi_msg}</h2>
+
+    <h2 th:text="${remove_msg}">${remove_msg}</h2>
+
     <a href="board/mania_list.html"
        th:href="@{mania_list}">아이템 리스트로 이동</a>
 </body>

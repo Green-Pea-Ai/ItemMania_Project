@@ -15,42 +15,46 @@
         <tr>
             <th align="center" width="80">CustNo</th>
             <th align="center" width="80">ItemName</th>
+            <th align="center" width="80">Price</th>
             <th align="center" width="80">Nickname</th>
             <th align="center" width="80">ID</th>
-            <th align="center" width="80">Price</th>
             <th align="center" width="80">RegDate</th>
         </tr>
 
         <tr th:if="${#lists.isEmpty(list_wd)}">
-            <!--비어있다는 메시지를 표시할 때는 7개의 열이 합쳐져야 한다-->
+            <!--비어있다는 메시지를 표시할 때는 6개의 열이 합쳐져야 한다-->
             <td colspan="6">
                 List is Empty.
             </td>
         </tr>
 
         <!-- th = Thymeleaf -->
+        <!-- foreach for(A : B) -->
         <tr th:each="board: ${list_wd}">
-            <td align="center" th:text="${board.custNo}">
-                ${board.custNo}
+            <td align="center" th:text="${board.customerNo}">
+                ${board.customerNo}
             </td>
 
             <td align="left">
                 <a href="board/mania_read.html"
-                   th:href="@{|mania_read?custNo=${board.custNo}|}"
+                   th:href="@{|mania_read?customerNo=${board.customerNo}|}"
                    th:text="${board.itemName}">
                     ${board.itemName}
                 </a>
             </td>
 
-            <td align ="center" th:text="${board.userId}">
-                ${board.userId}
-            </td>
-            <td align ="center" th:text="${board.nickName}">
-                ${board.nickName}
-            </td>
             <td align ="right" th:text="${board.price}">
                 ${board.price}
             </td>
+
+            <td align ="center" th:text="${board.nickName}">
+                ${board.nickName}
+            </td>
+
+            <td align ="center" th:text="${board.userId}">
+                ${board.userId}
+            </td>
+
             <td align ="center"
                 th:text="${#dates.format(board.regDate,
                  'yyyy-MM-dd HH:mm:ss')}">

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -31,7 +32,7 @@ public class ItemManiaController {
     }
 
     @GetMapping("/getManiaRegister")
-    public String getManiaRegister(ItemManiaBoard board, Model model) throws Exception {
+    public String getManiaRegister(@ModelAttribute("board") ItemManiaBoard board, Model model) throws Exception {
         log.info("getManiaRegister()");
 
         return "board/mania_register";
@@ -50,5 +51,37 @@ public class ItemManiaController {
         return "board/mania_success";
     }
 
+    @PostMapping("/mania_remove")
+    public String contRemove(int customerNo, Model model) throws Exception {
+        log.info("contRemove()");
+
+        //ServImpl에 코드를 작성해줘야 삭제가 작동한다?
+        maniaService.removeFromServ(customerNo);
+
+        model.addAttribute("remove_msg", "Delete Success!");
+
+        return "board/mania_success";
+    }
+
+    @GetMapping("/mania_read")
+    public String contRead(int customerNo, Model model) throws Exception {
+        log.info("contRead()");
+
+        /*org.thymeleaf.exceptions.TemplateProcessingException:
+        Error during execution of processor 'org.thymeleaf.spring5.
+        processor.SpringInputGeneralFieldTagProcessor'
+        (template: "board/mania_read" - line 33, col 16)*/
+
+        /*Caused by: org.springframework.beans.NotReadablePropertyException:
+        Invalid property 'customerNo' of bean class [java.lang.String]:
+        Bean property 'customerNo' is not readable or has an invalid getter method:
+        Does the return type of the getter match the parameter type of the setter?*/
+
+        // model.addAttribute("board", "boardValue");
+        model.addAttribute("read_pain", maniaService.readFromServ(customerNo));
+
+        return "board/mania_read";
+    }
 
 }
+

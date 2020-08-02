@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script type="text/javascript"
+        src="http://code.jquery.com/jquery-2.1.4.min.js">
+</script>
+
+<script>
+
+
+</script>
+
+<body>
+    <h2>아이템 정보 수정(modify)</h2>
+
+    <form id="board" action="board/success.html"
+          th:action="@{mania_modify}"
+          th:object="${board}" method="post">
+        <input type="hidden" name="cust_no" th:field="*{customerNo}"/>
+
+        <table>
+            "item_name = ?,
+            "price = ?,
+            "content = ?,
+            "where cust_no = ?";
+
+            private String itemName;
+            private int price;
+            private String content;
+            private int customerNo;
+
+            <tr>
+                <td>Item Name</td>
+                <td><input type="text" name="item_name"
+                            th:field="*{"></td>
+            </tr>
+
+        </table>
+    </form>
+
+</body>
+</html>

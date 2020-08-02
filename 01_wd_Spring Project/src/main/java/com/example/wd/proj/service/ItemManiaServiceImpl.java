@@ -22,4 +22,19 @@ public class ItemManiaServiceImpl implements ItemManiaService {
     public void maniaRegister(ItemManiaBoard board) throws Exception {
         maniaRepository.itemInsert(board);
     }
+
+    @Override
+    public void removeFromServ(Integer customerNo) throws Exception {
+        maniaRepository.removeFromRepo(customerNo);
+    }
+
+    @Override
+    public ItemManiaBoard readFromServ(Integer customerNo) throws Exception {
+        return maniaRepository.readFromRepo(customerNo);
+    }
+
+    @Override
+    public void modifyFromServ(ItemManiaBoard board) throws Exception {
+        maniaRepository.modifyFromRepo(board);
+    }
 }
