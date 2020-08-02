@@ -3,7 +3,7 @@ package com.example.wd.proj.entity;
 import java.util.Date;
 
 public class ItemManiaBoard {
-    private int customerNo;
+    private int custNo;
     private String userId;
     private String userPw;
     private String nickName;
@@ -13,11 +13,11 @@ public class ItemManiaBoard {
     private String content;
 
     // custNo======================================================
-    public int getCustomerNo() {
-        return customerNo;
+    public int getCustNo() {
+        return custNo;
     }
-    public void setCustomerNo(int customerNo) {
-        this.customerNo = customerNo;
+    public void setCustNo(int custNo) {
+        this.custNo = custNo;
     }
 
     // userId======================================================

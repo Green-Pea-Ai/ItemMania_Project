@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
@@ -20,6 +21,7 @@ public class ItemManiaController {
     @Autowired
     private ItemManiaService maniaService;
 
+    // list : 아이템 리스트 보기 =========================================================================================
     @GetMapping("/mania_list")
     public String contList(Model model) throws Exception {
         log.info("m_list()");
@@ -31,6 +33,7 @@ public class ItemManiaController {
         return "board/mania_list";
     }
 
+    // register : 아이템 등록 =========================================================================================
     @GetMapping("/getManiaRegister")
     public String getManiaRegister(@ModelAttribute("board") ItemManiaBoard board, Model model) throws Exception {
         log.info("getManiaRegister()");
@@ -51,20 +54,22 @@ public class ItemManiaController {
         return "board/mania_success";
     }
 
+    // remove : 아이템 삭제 =========================================================================================
     @PostMapping("/mania_remove")
-    public String contRemove(int customerNo, Model model) throws Exception {
+    public String contRemove(int custNo, Model model) throws Exception {
         log.info("contRemove()");
 
         //ServImpl에 코드를 작성해줘야 삭제가 작동한다?
-        maniaService.removeFromServ(customerNo);
+        maniaService.removeFromServ(custNo);
 
         model.addAttribute("remove_msg", "Delete Success!");
 
         return "board/mania_success";
     }
 
+    // read : 아이템 상세보기 =========================================================================================
     @GetMapping("/mania_read")
-    public String contRead(int customerNo, Model model) throws Exception {
+    public String contRead(int custNo, Model model) throws Exception {
         log.info("contRead()");
 
         /*org.thymeleaf.exceptions.TemplateProcessingException:
@@ -78,10 +83,34 @@ public class ItemManiaController {
         Does the return type of the getter match the parameter type of the setter?*/
 
         // model.addAttribute("board", "boardValue");
-        model.addAttribute("read_pain", maniaService.readFromServ(customerNo));
+        model.addAttribute("read_pain", maniaService.readFromServ(custNo));
 
         return "board/mania_read";
     }
 
+    // modify : 아이템 정보 수정 =========================================================================================
+    /*@GetMapping("/getManiaRegister")
+    public String getManiaRegister(@ModelAttribute("board") ItemManiaBoard board, Model model) throws Exception {
+        log.info("getManiaRegister()");*/
+
+    @GetMapping("/getManiaModify")
+    public String getManiaModify(int custNo, Model model) throws Exception {
+        log.info("getManiaModify()");
+
+        model.addAttribute("attr_modi", maniaService.readFromServ(custNo));
+
+        return "board/mania_modify";
+    }
+
+    @PostMapping("/postManiaModify")
+    public String postManiaModify(ItemManiaBoard board, Model model) throws Exception {
+        log.info("postManiaModify()");
+
+        maniaService.modifyFromServ(board);
+
+        model.addAttribute("modi_msg", "Modify Success!");
+
+        return "board/mania_success";
+    }
 }
 

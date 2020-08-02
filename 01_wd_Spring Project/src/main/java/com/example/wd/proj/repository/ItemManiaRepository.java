@@ -39,7 +39,7 @@ public class ItemManiaRepository {
 
                         ItemManiaBoard board = new ItemManiaBoard();
 
-                        board.setCustomerNo(rs.getInt("cust_no"));
+                        board.setCustNo(rs.getInt("cust_no"));
                         board.setUserId(rs.getString("id"));
                         board.setUserPw(rs.getString("pw"));
                         board.setNickName(rs.getString("nickname"));
@@ -73,13 +73,13 @@ public class ItemManiaRepository {
 
     // remove : 아이템 삭제 =========================================================================================
     // 다른 클래스가 가진 custNo의 쓰임새?
-    public void removeFromRepo(Integer customerNo) throws Exception {
+    public void removeFromRepo(Integer custNo) throws Exception {
         String query = "delete from item_mania where cust_no = ?";
-        jdbcTemplate.update(query, customerNo);
+        jdbcTemplate.update(query, custNo);
     }
 
     // read : 아이템 상세보기 =========================================================================================
-    public ItemManiaBoard readFromRepo(Integer customerNo) throws Exception {
+    public ItemManiaBoard readFromRepo(Integer custNo) throws Exception {
 
         /*"select cust_no, id, pw, nickname, " +
                 "item_name, price, reg_date, content from item_mania " +
@@ -96,7 +96,7 @@ public class ItemManiaRepository {
 
                         ItemManiaBoard board = new ItemManiaBoard();
 
-                        board.setCustomerNo(rs.getInt("cust_no"));
+                        board.setCustNo(rs.getInt("cust_no"));
                         board.setItemName(rs.getString("item_name"));
                         board.setPrice(rs.getInt("price"));
                         board.setNickName(rs.getString("nickname"));
@@ -107,7 +107,7 @@ public class ItemManiaRepository {
 
                         return board;
                     }
-                }, customerNo
+                }, custNo
                 //List<ItemManiaBoard> results = jdbcTemplate.query(데이터, custNo);
         );
 
@@ -124,7 +124,10 @@ public class ItemManiaRepository {
                 query,
                 board.getItemName(),
                 board.getPrice(),
-                board.getContent()
+                board.getContent(),
+
+                board.getCustNo()
+
         );
     }
 }

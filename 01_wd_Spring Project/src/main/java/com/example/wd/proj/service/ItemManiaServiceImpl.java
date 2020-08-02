@@ -24,13 +24,13 @@ public class ItemManiaServiceImpl implements ItemManiaService {
     }
 
     @Override
-    public void removeFromServ(Integer customerNo) throws Exception {
-        maniaRepository.removeFromRepo(customerNo);
+    public void removeFromServ(Integer custNo) throws Exception {
+        maniaRepository.removeFromRepo(custNo);
     }
 
     @Override
-    public ItemManiaBoard readFromServ(Integer customerNo) throws Exception {
-        return maniaRepository.readFromRepo(customerNo);
+    public ItemManiaBoard readFromServ(Integer custNo) throws Exception {
+        return maniaRepository.readFromRepo(custNo);
     }
 
     @Override

@@ -11,9 +11,9 @@ public interface ItemManiaService {
 
     public void maniaRegister(ItemManiaBoard board) throws Exception;
 
-    public void removeFromServ(Integer customerNo) throws Exception;
+    public void removeFromServ(Integer custNo) throws Exception;
 
-    public ItemManiaBoard readFromServ(Integer customerNo) throws Exception;
+    public ItemManiaBoard readFromServ(Integer custNo) throws Exception;
 
     public void modifyFromServ(ItemManiaBoard board) throws Exception;
 }

@@ -31,13 +31,13 @@
         <!-- th = Thymeleaf -->
         <!-- foreach for(A : B) -->
         <tr th:each="board: ${list_wd}">
-            <td align="center" th:text="${board.customerNo}">
-                ${board.customerNo}
+            <td align="center" th:text="${board.custNo}">
+                ${board.custNo}
             </td>
 
             <td align="left">
                 <a href="board/mania_read.html"
-                   th:href="@{|mania_read?customerNo=${board.customerNo}|}"
+                   th:href="@{|mania_read?custNo=${board.custNo}|}"
                    th:text="${board.itemName}">
                     ${board.itemName}
                 </a>

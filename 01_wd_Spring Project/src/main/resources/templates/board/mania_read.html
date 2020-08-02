@@ -17,10 +17,10 @@
         console.log(mrFormObj);
 
         $("#btnModify").on("click", function() {
-            var customerNo = $("#customer_no");
-            var customerNoVal = customerNo.val();
+            var custNo = $("#custNo");
+            var custNoVal = custNo.val();
 
-            self.location = "getManiaModify?customerNo=" + customerNoVal;
+            self.location = "getManiaModify?custNo=" + custNoVal;
         });
 
         $("#btnRemove").on("click", function() {
@@ -39,8 +39,8 @@
     <h2>아이템 정보 조회(Read)</h2>
 
     <form id="mr_board" th:object="${read_pain}" method="post">
-        <input type="hidden" name="customer_no"
-               th:field="*{customerNo}"/>
+        <input type="hidden" name="cust_no"
+               th:field="*{custNo}"/>
 
         <table>
             <tr>
