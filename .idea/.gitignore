@@ -4,4 +4,4 @@
 .gitignore
 
 # Wandoo ignored
-.gradle
+.gradle/
